@@ -297,7 +297,9 @@ select a.leads_id
     ,a.user_id
     ,a.leads_from_user_id
     -- 团
-    ,if(a.leads_from_user_id = g.founder_id,1,0*g.group_id) invited_by
+    ,case when a.leads_from_user_id = g.founder_id then 1
+        when g.group_id is not null then 0
+    end as invited_by
     ,g.found_rnn founder_grouping_times
     ,g.group_success
     -- 团长
