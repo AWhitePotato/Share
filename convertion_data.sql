@@ -84,7 +84,7 @@ groupon_detail as (
             and o.is_test_order = 0 -- 非测试单
             and o.order_type <> 90 -- 剔除积分兑换（积分兑换不算购买订单 新签一般没有）
             and o.user_id not in (8, 602040) -- 非测试账户 谢楠&李赫明
-            and o.refund_time is null -- 剔除掉退费用户
+            -- and o.refund_time is null -- 剔除掉退费用户
             and o.subject_type in (0, 1) 
         )
         where rnn = 1 
